@@ -1,12 +1,4 @@
-<template>
-    <div>
-        <login-form></login-form>
-    </div>
-</template>
-
-<script>
-
-import Api from './../api/'
+import Api from './../../api/'
 import LoginForm from './loginForm.vue'
 
 export default {
@@ -23,7 +15,6 @@ export default {
             }
         },
 
-
         mounted: function() {
             this.$store.commit('setTitle','User')
         },
@@ -36,7 +27,3 @@ export default {
             }  
         }
 }
-</script>
-
-<style scoped>
-</style>

@@ -13,7 +13,8 @@
 
                     <v-card-actions>
                     <v-btn primary v-on:click="loadUser">Login</v-btn>
-                    <v-btn info>Register</v-btn>
+                    <v-btn primary>Register</v-btn>
+                    <v-btn primary>Forgot password</v-btn>
                     </v-card-actions>
    
                 </v-card>

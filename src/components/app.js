@@ -1,10 +1,10 @@
 
 
 const computed = {
-    login() {
+    login : function() {
         return this.$store.state.user.login
     },
-    title() {
+    title : function() {
         return this.$store.state.title
     }
 }
@@ -17,4 +17,4 @@ const methods = {
 export default {
     computed,
     methods,
-}
+} 

@@ -14,7 +14,7 @@
 
         <main>
             <v-container fluid>
-                <transition name="fade" mode="out-in">
+                <transition name="mfade">
                     <router-view></router-view>
                 </transition>
             </v-container>
@@ -24,3 +24,18 @@
 
 
 <script src="./app"></script>
+
+<style scoped>
+.mfade-enter-active, .mfade-leave-active {
+  transition-property: opacity;
+  transition-duration: 0.20s;
+}
+
+.mfade-enter-active {
+  transition-delay: .20s;
+}
+
+.mfade-enter, .mfade-leave-active {
+  opacity: 0
+}
+</style>
