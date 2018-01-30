@@ -1,8 +1,6 @@
 
 import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from './actions'
 
-
-
 export default {
     namespaced: false,
 
@@ -47,11 +45,20 @@ export default {
 
         [AUTH_REQUEST]: ({commit, dispatch}, user) => {
 
-            return new Promise((resolve, reject) => { // The Promise used for router redirect in login
+            return new Promise((resolve, reject) => { 
+                
+                // The Promise used for router redirect in login
 
                 commit(AUTH_REQUEST)
 
-                resolve('good')
+                //resolve('good')
+
+                setTimeout( () => {
+
+                    reject('wrong password!!!')
+
+                }, 2000 )
+               
 
 /*                 axios({url: 'auth', data: user, method: 'POST' })
                 .then(resp => {

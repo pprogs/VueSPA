@@ -3,11 +3,13 @@
         <v-layout>
             <v-flex xs12 sm6 offset-sm3>
 
-                <v-form v-model="valid">
+                <v-form v-model="isValid">
                 <v-card>
+
                     <v-card-title primary-title>
                         <span class="headline">User Login</span>
                     </v-card-title>
+
                     <v-card-text>
                         <v-text-field 
                             v-model='inputLogin' 
@@ -23,12 +25,27 @@
                             :rules="passwordRules"
                             :disabled="isLoading"
                             required></v-text-field>
+
+                        <v-alert 
+                            color="error" 
+                            icon="warning" 
+                            transition="scale-transition"
+                            :value="isError">
+                            {{errorMessage}}
+                        </v-alert>
                     </v-card-text>
 
                     <v-card-actions>
-                    <v-btn primary v-on:click="loadUser" :loading="isLoading">Login</v-btn>
-                    <v-btn primary>Register</v-btn>
-                    <v-btn primary>Forgot password</v-btn>
+                        <v-btn 
+                            color = "primary"
+                            @click = "loadUser" 
+                            :loading = "isLoading"
+                            :disabled = "!isValid">
+                            Login
+                        </v-btn>
+
+                        <v-btn color = "primary">Register</v-btn>
+                        <v-btn color = "primary">Forgot password</v-btn>
                     </v-card-actions>
    
                 </v-card>
@@ -45,10 +62,12 @@
 
         data: function() {
             return {
-                valid:false,
+                isValid : false,
                 inputLogin : "",
                 inputPassword : "",
                 isLoading : false,
+                isError : false,
+                errorMessage : "",
 
                 nameRules: [
                     (v) => !!v || 'Name is required',
@@ -63,22 +82,39 @@
             }
         },
 
+        computed: {
+
+            errorMessage : function() {
+                return this.errorMessage
+            }
+        },
+
+
         methods: {
-            loadUser : function() {
-                //const { inputLogin, inputPassword } = this
+            loadUser : function() {           
           
-                this.isLoading = true
+                this.isError = false
+                this.isLoading = true                               
 
-                const user = { login:this.inputLogin, pass:this.inputPassword }
-                this.$store.dispatch(AUTH_REQUEST, user).then(() => {
+                const user = { 
+                    login : this.inputLogin, 
+                    pass : this.inputPassword 
+                }
 
-                    
+                this.$store.dispatch(AUTH_REQUEST, user)
+                .then(() => {   
+
                     this.$router.push('/')
+                
                 })
+                .catch((resp) => {
 
-                console.log(this.inputLogin)
-                console.log(this.inputPassword)
-                console.log(this.valid)
+                    this.isLoading = false
+                    this.isError = true
+                   
+                    this.errorMessage = resp
+        
+                })
             }
         }
     }

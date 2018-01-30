@@ -2,6 +2,14 @@
 
 > My first frontend project
 
+API
+VueJs, vue-router, vuex, vue-resource, vue-analytics
+UI
+vuetify
+Localization
+https://www.i18next.com/
+
+
 ## Build Setup
 
 ``` bash
