@@ -2,21 +2,22 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
+Vue.http.headers.common['Access-Control-Allow-Origin'] = '*'
 
 export default {
 
     resources : {
-        user: Vue.resource('http://localhost:8081/api/user{/id}')
+        userInfo: Vue.resource('http://localhost:8081/api/user{/id}'),
+        userAuth: Vue.resource('http://localhost:8081/api/auth')
     },
 
-    getUser(id, callback) {
-        this.resources.user.get({ id }).then( 
-            response => {
-                callback(response.body)
-            },
-            response => {
-                callback('error')
-            }
-        )
+    getUserInfo(id) {
+        console.log("getUserInfo")
+        return this.resources.userInfo.get({ id })        
+    },
+
+    authUser(user) {
+        console.log("authUser")
+        return this.resources.userAuth.get( user )
     }
 }

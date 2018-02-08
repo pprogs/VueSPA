@@ -31,14 +31,14 @@
                             icon="warning" 
                             transition="scale-transition"
                             :value="isError">
-                            {{errorMessage}}
+                            {{getErrorMessage}}
                         </v-alert>
                     </v-card-text>
 
                     <v-card-actions>
                         <v-btn 
                             color = "primary"
-                            @click = "loadUser" 
+                            @click = "loginUser" 
                             :loading = "isLoading"
                             :disabled = "!isValid">
                             Login
@@ -84,24 +84,25 @@
 
         computed: {
 
-            errorMessage : function() {
+            getErrorMessage : function() {
                 return this.errorMessage
             }
         },
 
 
         methods: {
-            loadUser : function() {           
+            loginUser : function() {           
           
                 this.isError = false
                 this.isLoading = true                               
 
                 const user = { 
-                    login : this.inputLogin, 
-                    pass : this.inputPassword 
+                    UserName : this.inputLogin, 
+                    Password : this.inputPassword 
                 }
 
                 this.$store.dispatch(AUTH_REQUEST, user)
+
                 .then(() => {   
 
                     this.$router.push('/')
@@ -112,8 +113,7 @@
                     this.isLoading = false
                     this.isError = true
                    
-                    this.errorMessage = resp
-        
+                    this.errorMessage = resp        
                 })
             }
         }

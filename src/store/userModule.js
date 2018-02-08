@@ -1,66 +1,72 @@
-
-import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from './actions'
+import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from "./actions";
+import Api from "~/api"
 
 export default {
-    namespaced: false,
+  namespaced: false,
 
-    state: {
-        login: "test login",
-        password: "",
-        id: -1,
-        logedIn: false,
+  state: {
+    login: "test login",
+    password: "",
+    id: -1,
+    logedIn: false,
 
-        token: localStorage.getItem('user-token') || '',
-        status: '',
+    token: localStorage.getItem("user-token") || "",
+    status: ""
+  },
+
+  getters: {
+    isAuthenticated: state => !!state.token,
+    authStatus: state => state.status
+  },
+
+  mutations: {
+    setLogin(state, newLogin) {
+      state.login = newLogin;
     },
 
-    getters: {
-        isAuthenticated: state => !!state.token,
-        authStatus: state => state.status,
+    [AUTH_REQUEST]: state => {
+      state.status = "loading";
     },
 
-    mutations: {
-        setLogin(state, newLogin) {
-            state.login = newLogin
-        },
-
-        [AUTH_REQUEST]: (state) => {
-            state.status = 'loading'
-        },
-
-        [AUTH_SUCCESS]: (state, token) => {
-            state.status = 'success'
-            state.token = token
-        },
-
-        [AUTH_ERROR]: (state) => {
-            state.status = 'error'
-        },
+    [AUTH_SUCCESS]: (state, token) => {
+      state.status = "success";
+      state.token = token;
     },
 
-    actions: {
-        login(context, payload) {
-            context.commit("setLogin", payload )
-        },
+    [AUTH_ERROR]: state => {
+            state.status = "error";
+    }
+  },
 
-        [AUTH_REQUEST]: ({commit, dispatch}, user) => {
+  actions: {
+    login(context, payload) {
+      context.commit("setLogin", payload);
+    },
 
-            return new Promise((resolve, reject) => { 
-                
-                // The Promise used for router redirect in login
+    [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
+      return new Promise((resolve, reject) => {
+        // The Promise used for router redirect in login
 
-                commit(AUTH_REQUEST)
+        Api.authUser( user ).then(
+            responce => {
+                commit(AUTH_REQUEST);
+                resolve();
+            },
+            responce => {
+                reject('blabla');
+            }
+        );
 
-                //resolve('good')
 
-                setTimeout( () => {
+        commit(AUTH_REQUEST);
 
-                    reject('wrong password!!!')
+        //resolve('good')
 
-                }, 2000 )
-               
+        setTimeout(() => {
+          reject("wrong password!!!");
+        }, 2000);
 
-/*                 axios({url: 'auth', data: user, method: 'POST' })
+        /*                 axios({url: 'auth', data: user, method: 'POST' })
                 .then(resp => {
                     const token = resp.data.token
 
@@ -73,16 +79,14 @@ export default {
                     resolve(resp)
                 }) */
 
-/*                 .catch(err => {
+        /*                 .catch(err => {
 
                     commit(AUTH_ERROR, err)
                     localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
                     reject(err)
 
                 }) */
-
-            })
-
-        }        
+      });
     }
-}
+  }
+};
