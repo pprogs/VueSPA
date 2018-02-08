@@ -45,8 +45,7 @@ export default {
 
     [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
       return new Promise((resolve, reject) => {
-        // The Promise used for router redirect in login
-
+     
         Api.authUser( user ).then(
             responce => {
                 commit(AUTH_REQUEST);
@@ -57,14 +56,6 @@ export default {
             }
         );
 
-
-        commit(AUTH_REQUEST);
-
-        //resolve('good')
-
-        setTimeout(() => {
-          reject("wrong password!!!");
-        }, 2000);
 
         /*                 axios({url: 'auth', data: user, method: 'POST' })
                 .then(resp => {
