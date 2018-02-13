@@ -17,7 +17,23 @@ export default {
     },
 
     authUser(user) {
+
         console.log("authUser")
-        return this.resources.userAuth.get( user )
+
+        return new Promise( (resolve,reject) => {
+            this.resources.userAuth
+            .save( user )
+            .then( responce => {
+                console.log('authUser responce');
+                console.log(responce);
+                resolve(responce);
+            })
+            .catch( error => {
+                console.log('authUser error');
+                console.log(error);
+                
+                reject(error.body);
+            })
+        })
     }
 }

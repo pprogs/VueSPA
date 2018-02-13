@@ -44,15 +44,27 @@ export default {
     },
 
     [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
+
       return new Promise((resolve, reject) => {
      
         Api.authUser( user ).then(
-            responce => {
-                commit(AUTH_REQUEST);
-                resolve();
+            user => {
+
+                    const token = 'user.token'
+
+                    localStorage.setItem('user-token', token) // store the token in localstorage
+                    commit(AUTH_SUCCESS, token)
+
+                    // you have your token, now log in your user :)
+                    dispatch(USER_REQUEST)
+
+                    resolve(user)
             },
-            responce => {
-                reject('blabla');
+            error => {
+
+                    commit(AUTH_ERROR, error)
+                    localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
+                    reject(error)
             }
         );
 
