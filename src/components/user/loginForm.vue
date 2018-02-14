@@ -92,16 +92,19 @@
 
         methods: {
             loginUser : function() {           
-          
-                this.isError = false
+                          
                 this.isLoading = true                               
 
-                const user = new FormData();
-                user.append("UserName", this.inputLogin);
-                user.append("Password", this.inputPassword);
-            
+                const user = {
+                    "UserName" : this.inputLogin,
+                    "Password": this.inputPassword
+                }
+                      
                 this.$store.dispatch(AUTH_REQUEST, user)
                 .then((resp) => {   
+
+                    this.isError = false
+                    this.isLoading = false
 
                     this.$router.push('/')
                 
