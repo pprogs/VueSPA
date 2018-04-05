@@ -27,6 +27,7 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "vue": "^2.5.13",
     "vue-analytics": "^5.8.0",

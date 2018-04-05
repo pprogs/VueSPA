@@ -1,8 +1,11 @@
-import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT } from "./actions";
+import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT, USER_REGISTER } from "./actions";
 import Api from "~/api"
 
 export default {
   namespaced: false,
+
+  //------------------------------
+  // state
 
   state: {
     login: "test login",
@@ -14,15 +17,18 @@ export default {
     status: ""
   },
 
+  //------------------------------
+  // getters
+
   getters: {
     isAuthenticated: state => !!state.token,
     authStatus: state => state.status
   },
 
+  //------------------------------
+  // mutations
+
   mutations: {
-    setLogin(state, newLogin) {
-      state.login = newLogin;
-    },
 
     [AUTH_REQUEST]: state => {
       state.status = "loading";
@@ -34,39 +40,53 @@ export default {
     },
 
     [AUTH_ERROR]: state => {
-            state.status = "error";
+      state.status = "error";
     }
   },
 
-  actions: {
-    login(context, payload) {
-      context.commit("setLogin", payload);
-    },
+  //------------------------------
+  // actions
 
-    [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
+  actions: {
+
+    //
+    //
+    //
+    [AUTH_REQUEST]: (context, user) => {
 
       return new Promise((resolve, reject) => {
      
         Api.authUser( user ).then(
-            user => {
+          user => {
 
-                    const token = 'user.token'
+            const token = 'user.token'
 
-                    localStorage.setItem('user-token', token) // store the token in localstorage
-                    commit(AUTH_SUCCESS, token)
+            localStorage.setItem('user-token', token)
 
-                    // you have your token, now log in your user :)
-                    //dispatch(USER_REQUEST)
+            context.commit(AUTH_SUCCESS, token)
 
-                    resolve(user)
-            },
-            error => {
+            resolve(user)
+          },
+          error => {
+          
+            console.log('dispatch auth req error');
+            console.log(error);
 
-                    commit(AUTH_ERROR, error)
-                    localStorage.removeItem('user-token') // if the request fails, remove any possible user token if possible
-                    reject(error)
-            }
+            context.commit(AUTH_ERROR, error);
+            localStorage.removeItem('user-token') ;
+
+            reject(error)
+          }
         );
+      });
+    },
+
+    [USER_REGISTER]: (context, user) => {
+
+      return new Promise( (resolve, reject) => {
+
+        
+
       });
     }
   }
