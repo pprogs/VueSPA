@@ -2,6 +2,7 @@ import User from '~/components/user/user.vue'
 import UserLogin from '~/components/user/userLogin.vue'
 import UserRegister from '~/components/user/userRegister.vue'
 import UserRecovery from '~/components/user/userRecovery.vue'
+import UserProfile from '~/components/user/userProfile.vue'
 
 export default [
     { 
@@ -21,9 +22,9 @@ export default [
                 path: 'register',
                 component: UserRegister
             }, {
-                path: ':id',
-                component: null
-            }
+                path: ':id(\\d+)',
+                component: UserProfile
+            },
         ]
     }
 ];
