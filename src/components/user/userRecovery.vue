@@ -7,11 +7,17 @@
                 <v-card>
 
                     <v-card-title primary-title>
-                        <span class="headline">User recovery</span>
+                        <span class="headline">Password recovery</span>
                     </v-card-title>
 
                     <v-card-text>
-                        
+                        <v-text-field 
+                            prepend-icon='email'
+                            v-model='inputEmail' 
+                            label="E-Mail" 
+                            :rules="emailRules"
+                            :disabled="isLoading"
+                            required></v-text-field>
                     </v-card-text>
 
                     <v-card-actions>
@@ -35,6 +41,7 @@
         data: function() {
             return {
                 isValid : false,
+                inputEmail : '',
             }
         },
 
@@ -44,7 +51,7 @@
 
         methods: {           
         }
-    }
+    };
 </script>
 
 <style scoped>
