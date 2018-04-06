@@ -14,7 +14,8 @@ vuetify
 
 Localization
 https://www.i18next.com/
-https://github.com/panter/vue-i18next
+https://github.com/dkfbasel/vuex-i18n or
+https://github.com/panter/vue-i18next 
 
 
 Auth tutorial

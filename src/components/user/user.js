@@ -1,11 +1,6 @@
-import Api from './../../api/'
-import LoginForm from './loginForm.vue'
+import Api from '~/api/'
 
 export default {
-
-        components: {
-            'login-form': LoginForm
-        },
 
         data: function() {
             return {

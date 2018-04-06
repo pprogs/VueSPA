@@ -12,6 +12,7 @@
 
                     <v-card-text>
                         <v-text-field 
+                            prepend-icon="person"
                             v-model='inputLogin' 
                             label="User name" 
                             :rules="nameRules"
@@ -19,6 +20,7 @@
                             required></v-text-field>
 
                         <v-text-field 
+                            prepend-icon="https"
                             v-model="inputPassword" 
                             type="password" 
                             label="Password" 
@@ -36,7 +38,7 @@
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn 
+                        <v-btn                         
                             color = "primary"
                             @click = "loginUser" 
                             :loading = "isLoading"
@@ -44,8 +46,17 @@
                             Login
                         </v-btn>
 
-                        <v-btn color = "primary">Register</v-btn>
-                        <v-btn color = "primary">Forgot password</v-btn>
+                        <v-btn 
+                            color = "primary"
+                            to = "/user/register">
+                            Register
+                        </v-btn>
+
+                        <v-btn 
+                            color = "primary"
+                            to="/user/recovery">
+                            Forgot password
+                        </v-btn>
                     </v-card-actions>
    
                 </v-card>
@@ -73,7 +84,10 @@
                     (v) => !!v || 'Name is required',
                     (v) => v.length <= 10 || 'Name must be less than 10 characters'
                 ],
-
+                emailRules: [
+                    (v) => !!v || 'E-mail is required',
+                    (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+                ],
                 passwordRules: [
                     (v) => !!v || 'Password is required',
                     (v) => v.length >= 3 || 'Password must be 3 or more characters',
