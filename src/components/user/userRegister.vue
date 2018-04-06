@@ -67,6 +67,9 @@
 </template>
 
 <script>
+
+    import { nameRules, emailRules, passwordRules } from '~/api/validateRules.js';
+
     export default {
         data: function() {
             return {
@@ -79,19 +82,9 @@
                 isError : false,
                 errorMessage : "",
 
-                nameRules: [
-                    (v) => !!v || 'Name is required',
-                    (v) => v.length <= 10 || 'Name must be less than 10 characters'
-                ],
-                emailRules: [
-                    (v) => !!v || 'E-mail is required',
-                    (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-                ],
-                passwordRules: [
-                    (v) => !!v || 'Password is required',
-                    (v) => v.length >= 3 || 'Password must be 3 or more characters',
-                    (v) => v.length <= 50 || 'Password must be less than 50 characters'
-                ]
+                nameRules,
+                emailRules,
+                passwordRules,
             }
         },
 
