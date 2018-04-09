@@ -1,17 +1,24 @@
 
-export const nameRules = [
-    (v) => !!v || 'Name is required',
-    (v) => v.length <= 10 || 'Name must be less than 10 characters',
-    (v) => v.length <= 50 || 'Name must be less than 50 characters',
-];
 
-export const emailRules = [
-    (v) => !!v || 'E-mail is required',
-    (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-];
+export function nameRules(loc) {
+    return [
+        (v) => !!v || loc('name_req'),
+        (v) => v.length <= 10 || loc('name_small'),
+        (v) => v.length <= 50 || loc('name_long'),
+    ];
+};
 
-export const passwordRules = [
-    (v) => !!v || 'Password is required',
-    (v) => v.length >= 3 || 'Password must be 3 or more characters',
-    (v) => v.length <= 50 || 'Password must be less than 50 characters'
-];
+export function emailRules(loc) { 
+    return [
+        (v) => !!v || loc('email_req'),
+        (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || loc('email_valid'),
+    ];
+};
+
+export function passwordRules(loc) { 
+    return [
+        (v) => !!v || loc('pass_req'),
+        (v) => v.length >= 3 || loc('pass_small'),
+        (v) => v.length <= 50 || loc('pass_long'),
+    ];
+};

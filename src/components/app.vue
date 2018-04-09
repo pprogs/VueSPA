@@ -8,12 +8,13 @@
                 <v-btn flat exact to="/">Index</v-btn>
                 <v-btn flat exact to="/about">About</v-btn>
                 <v-btn flat exact to="/user">User</v-btn>
+                <v-btn flat @click="changeLocale">{{ locale }}</v-btn>
             </v-toolbar-items>
         </v-toolbar>
 
         <v-content>
             <v-container fluid>
-                <transition name="mfade">
+                <transition name="mfade" mode="out-in">>
                     <router-view></router-view>
                 </transition>
             </v-container>
@@ -21,17 +22,26 @@
     </v-app>
 </template>
 
-<script src="./app"></script>
+<script>
+
+    import {computed, methods} from './app'
+
+    export default {
+        computed,
+        methods,
+    }
+
+</script>
 
 <style scoped>
-.mfade-enter-active, .mfade-leave-active {
-  transition-property: opacity;
-  transition-duration: 0.20s;
-}
-.mfade-enter-active {
-  transition-delay: .20s;
-}
-.mfade-enter, .mfade-leave-active {
-  opacity: 0
-}
+  .mfade-enter-active, .mfade-leave-active {
+    transition-property: opacity;
+    transition-duration: 0.10s;
+  }
+  .mfade-enter-active {
+    transition-delay: .10s;
+  }
+  .mfade-enter, .mfade-leave-active {
+    opacity: 0
+  }
 </style>

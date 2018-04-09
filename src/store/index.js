@@ -8,8 +8,13 @@ export default new Vuex.Store({
 
     state: {
         count: 0,
+        loc: 'ru',
         message: "Some Test Message",
         title: "SomeTitle"
+    },
+
+    getters: {
+        currentLocale: state => state.loc,
     },
     
     modules: {
@@ -17,6 +22,10 @@ export default new Vuex.Store({
     },
 
     mutations: {
+
+        locale(state,loc) {
+            state.loc = loc;
+        },
         increment(state) {
             state.count += 1
         },

@@ -7,14 +7,14 @@
                 <v-card>
 
                     <v-card-title primary-title>
-                        <span class="headline">User Login</span>
+                        <span class="headline">{{ $t('usr_login') }}</span>
                     </v-card-title>
 
                     <v-card-text>
                         <v-text-field 
                             prepend-icon="person"
                             v-model='inputLogin' 
-                            label="User name" 
+                            :label= "$t('l_name')"
                             :rules="nameRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -23,7 +23,7 @@
                             prepend-icon="https"
                             v-model="inputPassword" 
                             type="password" 
-                            label="Password" 
+                            :label= "$t('l_pass')"
                             :rules="passwordRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -43,19 +43,19 @@
                             @click = "loginUser" 
                             :loading = "isLoading"
                             :disabled = "!isValid">
-                            Login
+                            {{ $t('usr_login') }}
                         </v-btn>
 
                         <v-btn 
                             color = "primary"
                             to = "/user/register">
-                            Register
+                            {{ $t('usr_b_reg') }}
                         </v-btn>
 
                         <v-btn 
                             color = "primary"
                             to="/user/recovery">
-                            Forgot password
+                            {{ $t('usr_b_rec') }}
                         </v-btn>
                     </v-card-actions>
    
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-    import {AUTH_REQUEST} from '~/store/actions'
+    import { AUTH_REQUEST } from '~/store/actions'
     import { nameRules, passwordRules } from '~/api/validateRules.js';
 
     export default {
@@ -81,8 +81,8 @@
                 isError : false,
                 errorMessage : "",
 
-                nameRules,
-                passwordRules,
+                nameRules : nameRules(this.$t),
+                passwordRules : passwordRules(this.$t),
             }
         },
 
