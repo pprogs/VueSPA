@@ -1,0 +1,23 @@
+{
+    "l_name" : "Логин",
+    "l_pass" : "Пароль",    
+    "l_email" : "E-Mail",
+
+    "name_req" : "Имя обязательно",
+    "name_small" : "Имя должно быть больше 10 символов",
+    "name_long" : "Имя должно быть меньше 50 символов",
+    "email_req" : "E-mail обязателен",
+    "email_valid" :"Формат E-mail не верный",
+    "pass_req" : "Пароль обязателен",
+    "pass_small" : "Password must be 3 or more characters",
+    "pass_long" : "Password must be less than 50 characters",
+    "pass_valid" : "Password must be valid",
+
+    "usr_login" : "Вход",
+    "usr_b_login" : "Регистрация",
+    "usr_b_rec" : "Восстановление пароля",
+    "usr_b_reg" : "ВХОД",
+
+    "usr_reg" : "НАПОМНИТЬ ПАРОЛЬ",
+    "usr_rec" : "РЕГИСТРАЦИЯ"
+}

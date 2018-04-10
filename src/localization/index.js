@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 
 import vuexI18n from 'vuex-i18n';
 
-import ru from './ru'
-import en from './en'
+import ru from './ru.json'
+import en from './en.json'
 
 export default (store) => {
 

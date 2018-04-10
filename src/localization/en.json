@@ -1,0 +1,23 @@
+{
+    "l_name" : "Name",
+    "l_pass" : "Password",    
+    "l_email" : "E-Mail",
+
+    "name_req" : "Name is required",
+    "name_small" : "Name must be less than 10 characters",
+    "name_long" : "Name must be less than 50 characters",
+    "email_req" : "E-mail is required",
+    "email_valid" :"E-mail must be valid",
+    "pass_req" : "Password is required",
+    "pass_small" : "Password must be 3 or more characters",
+    "pass_long" : "Password must be less than 50 characters",
+    "pass_valid" : "Password must be valid",
+
+    "usr_login" : "User Login",
+    "usr_b_login" : "User Register",
+    "usr_b_rec" : "Password recovery",
+    "usr_b_reg" : "LOGIN",
+
+    "usr_reg" : "FORGOT PASSWORD",
+    "usr_rec" : "REGISTER"
+}
