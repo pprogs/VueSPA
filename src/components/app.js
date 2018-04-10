@@ -1,11 +1,13 @@
 
 
 let computed = {
+
     login : function() {
         return this.$store.state.user.login
     },
+
     title : function() {
-        return this.$store.state.title
+        return this.$t(this.$store.state.title);
     },
 
     locale : function() {
@@ -14,6 +16,7 @@ let computed = {
 }
 
 let methods = {
+    
     setMessage: function (event) {
         this.$store.dispatch('user/login', event.target.value)
     },

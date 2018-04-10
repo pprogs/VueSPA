@@ -8,16 +8,12 @@
 
 <script>
 
-    import Game from '../game/'
-
-    let game = new Game(null);
-
-
     export default {
         mounted: function() {
-            this.$store.commit('setTitle',game.getTitle())
-        }
+            this.$store.commit('setTitle', 'title_about');
+        },
     }
+
 </script>
 
 <style lang='styl' src="./about.styl"></style>

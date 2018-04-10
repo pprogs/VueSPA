@@ -1,6 +1,8 @@
 {
     "l_name" : "Логин",
-    "l_pass" : "Пароль",    
+    "l_user" : "Пользователь",
+    "l_pass" : "Пароль",
+    "l_pass2" : "Повторить пароль",  
     "l_email" : "E-Mail",
 
     "name_req" : "Имя обязательно",
@@ -9,15 +11,26 @@
     "email_req" : "E-mail обязателен",
     "email_valid" :"Формат E-mail не верный",
     "pass_req" : "Пароль обязателен",
-    "pass_small" : "Password must be 3 or more characters",
-    "pass_long" : "Password must be less than 50 characters",
-    "pass_valid" : "Password must be valid",
+    "pass_small" : "Пароль должен быть больше 3 символов",
+    "pass_long" : "Пароль должен быть меньше 50 символов",
+    "pass_valid" : "Не верный формат пароля",
 
     "usr_login" : "Вход",
-    "usr_b_login" : "Регистрация",
-    "usr_b_rec" : "Восстановление пароля",
-    "usr_b_reg" : "ВХОД",
+    "usr_reg" : "Регистрация",
+    "usr_rec" : "Напомнить пароль",
 
-    "usr_reg" : "НАПОМНИТЬ ПАРОЛЬ",
-    "usr_rec" : "РЕГИСТРАЦИЯ"
+    "usr_b_login" : "ВХОД",
+    "usr_b_forgot" : "НАПОМНИТЬ ПАРОЛЬ",
+    "usr_b_recovery" : "ВОССТАНОВИТЬ",    
+    "usr_b_reg" : "РЕГИСТРАЦИЯ",
+    "usr_b_areg" : "ЕСТЬ РЕГИСТРАЦИЯ",
+    "usr_b_remember" : "ВСПОМНИЛ",
+
+    "nav_b_index" : "ГЛАВНАЯ",
+    "nav_b_about" : "О НАС",
+    "nav_b_user" : "ПОЛЬЗОВАТЕЛЬ",
+
+    "title_user" : "Пользователь",
+    "title_about" : "О нас",
+    "title_index" : "Главная"
 }

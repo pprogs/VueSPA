@@ -1,6 +1,8 @@
 {
     "l_name" : "Name",
-    "l_pass" : "Password",    
+    "l_user" : "User",
+    "l_pass" : "Password",  
+    "l_pass2" : "Confirm password",    
     "l_email" : "E-Mail",
 
     "name_req" : "Name is required",
@@ -14,10 +16,21 @@
     "pass_valid" : "Password must be valid",
 
     "usr_login" : "User Login",
-    "usr_b_login" : "User Register",
-    "usr_b_rec" : "Password recovery",
-    "usr_b_reg" : "LOGIN",
+    "usr_reg" : "User registration",
+    "usr_rec" : "User recovery",
 
-    "usr_reg" : "FORGOT PASSWORD",
-    "usr_rec" : "REGISTER"
+    "usr_b_login" : "LOGIN",
+    "usr_b_forgot" : "FORGOT PASSWORD",
+    "usr_b_recovery" : "RECOVERY",
+    "usr_b_reg" : "REGISTER",
+    "usr_b_areg" : "ALREADY REGISTERED",
+    "usr_b_remember" : "I REMEMBER",
+
+    "nav_b_index" : "INDEX",
+    "nav_b_about" : "ABOUT",
+    "nav_b_user" : "USER",
+
+    "title_user" : "User section",
+    "title_about" : "About",
+    "title_index" : "Index"    
 }

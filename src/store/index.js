@@ -23,7 +23,7 @@ export default new Vuex.Store({
 
     mutations: {
 
-        locale(state,loc) {
+        locale(state, loc) {
             state.loc = loc;
         },
         increment(state) {

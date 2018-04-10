@@ -55,7 +55,7 @@
                         <v-btn 
                             color = "primary"
                             to="/user/recovery">
-                            {{ $t('usr_b_rec') }}
+                            {{ $t('usr_b_forgot') }}
                         </v-btn>
                     </v-card-actions>
    

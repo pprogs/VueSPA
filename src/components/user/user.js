@@ -10,8 +10,12 @@ export default {
             }
         },
 
+        computed : {
+
+        },
+
         mounted: function() {
-            this.$store.commit('setTitle','User')
+            this.$store.commit('setTitle', 'l_user');
         },
 
         methods: {

@@ -7,7 +7,7 @@
                 <v-card>
 
                     <v-card-title primary-title>
-                        <span class="headline">Password recovery</span>
+                        <span class="headline">{{ $t('usr_rec')}}</span>
                     </v-card-title>
 
                     <v-card-text>
@@ -20,11 +20,18 @@
                             required></v-text-field>
                     </v-card-text>
 
-                    <v-card-actions>
-              
+                    <v-card-actions>            
+                        <v-btn 
+                            color = "primary"
+                            :disabled = "!isValid">
+                            {{ $t('usr_b_recovery')}}
+                        </v-btn>
 
-                        <v-btn color = "primary">Recovery</v-btn>
-             
+                        <v-btn 
+                            color = "primary"
+                            to = "/user/login">
+                            {{ $t('usr_b_remember') }}
+                        </v-btn>
                     </v-card-actions>
    
                 </v-card>
@@ -36,12 +43,16 @@
 
 <script>
 
+    import { emailRules } from '~/api/validateRules.js';
+
     export default {
 
         data: function() {
             return {
                 isValid : false,
+                isLoading : false,
                 inputEmail : '',
+                emailRules : emailRules(this.$t),
             }
         },
 

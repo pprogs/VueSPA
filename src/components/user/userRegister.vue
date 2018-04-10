@@ -7,14 +7,14 @@
                 <v-card>
 
                     <v-card-title primary-title>
-                        <span class="headline">Register new user</span>
+                        <span class="headline">{{ $t('usr_reg') }}</span>
                     </v-card-title>
 
                     <v-card-text>
                         <v-text-field 
                             prepend-icon='person'
                             v-model='inputLogin' 
-                            label="User name" 
+                            :label="$t('l_name')" 
                             :rules="nameRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -22,7 +22,7 @@
                          <v-text-field 
                             prepend-icon='email'
                             v-model='inputEmail' 
-                            label="E-Mail" 
+                            :label="$t('l_email')"
                             :rules="emailRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -31,7 +31,7 @@
                             prepend-icon='https'
                             v-model="inputPassword" 
                             type="password" 
-                            label="Password" 
+                            :label="$t('l_pass')"
                             :rules="passwordRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -40,7 +40,7 @@
                             prepend-icon='https'
                             v-model="confirmPassword" 
                             type="password" 
-                            label="Confirm password" 
+                            :label="$t('l_pass2')"
                             :rules="passwordRules"
                             :disabled="isLoading"
                             required></v-text-field>
@@ -55,8 +55,17 @@
                     </v-card-text>
 
                     <v-card-actions>                
-                        <v-btn color = "primary">Register</v-btn>
-                        <v-btn color = "primary">Already registered</v-btn>
+                        <v-btn 
+                            color = "primary"
+                            :disabled = "!isValid">
+                            {{ $t('usr_b_reg') }}
+                        </v-btn>
+
+                        <v-btn 
+                            color = "primary"
+                            to = "/user/login">
+                            {{ $t('usr_b_areg') }}
+                        </v-btn>
                     </v-card-actions>
    
                 </v-card>
@@ -82,16 +91,16 @@
                 isError : false,
                 errorMessage : "",
 
-                nameRules,
-                emailRules,
-                passwordRules,
+                nameRules : nameRules(this.$t),
+                emailRules : emailRules(this.$t),
+                passwordRules : passwordRules(this.$t),
             }
         },
 
         computed: {
 
             getErrorMessage : function() {
-                return this.errorMessage
+                return this.errorMessage;
             }
         },
     }
