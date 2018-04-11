@@ -65,7 +65,6 @@ export default {
           user => {
 
             console.log('store auth_req success');
-            console.log(user);
 
             const token = 'user.token'
             localStorage.setItem('user-token', token)
@@ -77,7 +76,6 @@ export default {
           error => {
           
             console.log('dispatch auth req error');
-            console.log(error);
 
             context.commit(AUTH_ERROR, error);
             localStorage.removeItem('user-token') ;
@@ -98,6 +96,7 @@ export default {
     },
 
     [AUTH_LOGOUT]: (context) => {
+
       context.commit(AUTH_LOGOUT);
       localStorage.removeItem('user-token') ;
     }

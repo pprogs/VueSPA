@@ -31,7 +31,6 @@ export default {
     authUser(user) {
 
         console.log("authUser");
-        console.log(user);
 
         return new Promise( (resolve,reject) => {
 
@@ -40,14 +39,12 @@ export default {
             .then( (response) => {
 
                 console.log('authUser responce');
-                console.log(response);
 
                 if (response.status === 200 && response.data) {
                         try {                            
                             resolve(response.data);
                         } catch(e) {
                             console.log('error parsing json response');
-                            console.log(response.data);
                             console.log(e);
                             
                             reject(Errors.INT);
@@ -58,7 +55,6 @@ export default {
             .catch( (error) => {
 
                 console.log('authUser error');
-                console.log( { error });
 
                 if (error.response) {
                     // check error codes
@@ -85,13 +81,11 @@ export default {
             })                
             .then( responce => {
                 console.log('authUser responce');
-                console.log(responce);
 
                 resolve(responce);
             })
             .catch( error => {
                 console.log('authUser error');
-                console.log(error);
                     
                 reject(error.body);
             });

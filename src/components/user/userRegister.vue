@@ -3,7 +3,7 @@
         <v-layout>
             <v-flex xs12 sm6 offset-sm3>
 
-                <v-form v-model="isValid">
+                <v-form v-model="isValid" @submit.prevent>
                 <v-card>
 
                     <v-card-title primary-title>
@@ -57,6 +57,7 @@
                     <v-card-actions>                
                         <v-btn 
                             color = "primary"
+                            type = "submit"
                             :disabled = "!isValid">
                             {{ $t('usr_b_reg') }}
                         </v-btn>
