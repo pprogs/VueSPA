@@ -41,6 +41,11 @@ export default {
 
     [AUTH_ERROR]: state => {
       state.status = "error";
+    },
+
+    [AUTH_LOGOUT]: state => {
+      state.token = undefined;
+      state.status = undefined;
     }
   },
 
@@ -90,6 +95,11 @@ export default {
         
 
       });
+    },
+
+    [AUTH_LOGOUT]: (context) => {
+      context.commit(AUTH_LOGOUT);
+      localStorage.removeItem('user-token') ;
     }
   }
 };

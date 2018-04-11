@@ -29,6 +29,7 @@
     "nav_b_index" : "ГЛАВНАЯ",
     "nav_b_about" : "О НАС",
     "nav_b_user" : "ПОЛЬЗОВАТЕЛЬ",
+    "usr_b_logout" : "ВЫЙТИ",
 
     "title_user" : "Пользователь",
     "title_about" : "О нас",

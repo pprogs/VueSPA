@@ -12,7 +12,12 @@
 
                     is logged in : {{ isLoggedIn }}
 
-                    <v-card-actions>             
+                    <v-card-actions>     
+                            <v-btn 
+                            @click = "logoutUser" 
+                            color = "primary">
+                            {{ $t('usr_b_logout') }}
+                        </v-btn>        
                     </v-card-actions>
    
                 </v-card>
@@ -23,6 +28,8 @@
 </template>
 
 <script>
+
+    import Store from '~/store'
 
     export default {
 
@@ -40,8 +47,20 @@
         },
 
 
-        methods: {           
-        }
+        methods: {  
+
+            logoutUser() {
+                this.$store.dispatch('AUTH_LOGOUT');
+                this.$router.push('/user');
+            }         
+        },
+
+        beforeRouteEnter (to, from, next) {
+            if (!Store.getters.isAuthenticated) {
+                next('/user/login');
+            } else
+                next();
+        },        
     };
 </script>
 

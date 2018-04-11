@@ -29,6 +29,7 @@
     "nav_b_index" : "INDEX",
     "nav_b_about" : "ABOUT",
     "nav_b_user" : "USER",
+    "usr_b_logout" : "LOGOUT",
 
     "title_user" : "User section",
     "title_about" : "About",

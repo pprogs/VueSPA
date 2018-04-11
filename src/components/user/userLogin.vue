@@ -67,6 +67,7 @@
 </template>
 
 <script>
+    import Store from '~/store'
     import { AUTH_REQUEST } from '~/store/actions'
     import { nameRules, passwordRules } from '~/api/validateRules.js';
 
@@ -93,7 +94,6 @@
             }
         },
 
-
         methods: {
             loginUser : function() {           
                           
@@ -109,13 +109,13 @@
                 .dispatch(AUTH_REQUEST, user)
                 .then((resp) => {   
 
-                    this.isError = false                    
-                    this.$router.push('/user/profile')                
+                    this.isError = false;
+                    this.$router.push('/user/profile');
                 })
                 .catch((resp) => {
                    
                     this.errorMessage = this.$t( 'api_' + resp);
-                    this.isError = true;                    
+                    this.isError = true;
                 })
                 .finally(() => {
 
@@ -123,7 +123,15 @@
                      console.log('auth finally')
                 });
             }
-        }
+        },
+
+        beforeRouteEnter (to, from, next) {
+            if (Store.getters.isAuthenticated) {
+                next('/user/profile');
+            } else
+                next();
+        },
+  
     }
 </script>
 
