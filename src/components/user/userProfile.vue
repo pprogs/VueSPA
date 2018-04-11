@@ -10,13 +10,9 @@
                         <span class="headline">Profile</span>
                     </v-card-title>
 
-                
+                    is logged in : {{ isLoggedIn }}
 
-                    <v-card-actions>
-              
-
-                        <v-btn color = "primary">Recovery</v-btn>
-             
+                    <v-card-actions>             
                     </v-card-actions>
    
                 </v-card>
@@ -33,11 +29,14 @@
         data: function() {
             return {
                 isValid : false,
-                inputEmail : '',
             }
         },
 
         computed: {
+
+            isLoggedIn() {
+                return this.$store.getters.isAuthenticated
+            },
         },
 
 

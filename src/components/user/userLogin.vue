@@ -97,29 +97,31 @@
         methods: {
             loginUser : function() {           
                           
-                this.isLoading = true                               
+                this.isLoading = true;  
+                this.isError = false;                             
 
                 const user = {
                     "UserName" : this.inputLogin,
                     "Password": this.inputPassword
                 }
                       
-                this.$store.dispatch(AUTH_REQUEST, user)
+                this.$store
+                .dispatch(AUTH_REQUEST, user)
                 .then((resp) => {   
 
-                    this.isError = false
-                    this.isLoading = false
-
-                    this.$router.push('/')
-                
+                    this.isError = false                    
+                    this.$router.push('/user/profile')                
                 })
                 .catch((resp) => {
-
-                    this.isLoading = false
-                    this.isError = true
                    
-                    this.errorMessage = resp        
+                    this.errorMessage = this.$t( 'api_' + resp);
+                    this.isError = true;                    
                 })
+                .finally(() => {
+
+                     this.isLoading = false
+                     console.log('auth finally')
+                });
             }
         }
     }

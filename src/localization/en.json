@@ -32,5 +32,10 @@
 
     "title_user" : "User section",
     "title_about" : "About",
-    "title_index" : "Index"    
+    "title_index" : "Index",
+
+
+    "api_503" : "Could not connect. Please, try again later",
+    "api_401" : "User or password is incorrect",
+    "api_500" : "Internal error. Please, try again later"
 }

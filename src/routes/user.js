@@ -21,6 +21,9 @@ export default [
             }, {                
                 path: 'register',
                 component: UserRegister
+            }, {                
+                path: 'profile',
+                component: UserProfile                
             }, {
                 path: ':id(\\d+)',
                 component: UserProfile

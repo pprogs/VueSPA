@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import axios from 'axios'
 
+export const Errors = {
+    NO_CONN : 503,
+    INT : 500
+}
+
+
 export default {
 
     Ax : axios.create({
@@ -29,22 +35,38 @@ export default {
 
         return new Promise( (resolve,reject) => {
 
-            this.Ax.post('auth', user )              
-            .then( responce => {
+            this.Ax.post('auth', user )
+
+            .then( (response) => {
+
                 console.log('authUser responce');
-                console.log(responce);
+                console.log(response);
 
-                resolve(responce);
+                if (response.status === 200 && response.data) {
+                        try {                            
+                            resolve(response.data);
+                        } catch(e) {
+                            console.log('error parsing json response');
+                            console.log(response.data);
+                            console.log(e);
+                            
+                            reject(Errors.INT);
+                        }
+                }
+                reject(Errors.INT);
             })
-            .catch( error => {
+            .catch( (error) => {
+
                 console.log('authUser error');
+                console.log( { error });
 
-                const msg = error.response.data;
+                if (error.response) {
+                    // check error codes
+                    reject(error.response.status);
+                } 
 
-                console.log(msg);
-                
-                    
-                reject(msg);
+                // no connection
+                reject(Errors.NO_CONN);                
             });
         });
     },

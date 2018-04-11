@@ -59,8 +59,10 @@ export default {
         Api.authUser( user ).then(
           user => {
 
-            const token = 'user.token'
+            console.log('store auth_req success');
+            console.log(user);
 
+            const token = 'user.token'
             localStorage.setItem('user-token', token)
 
             context.commit(AUTH_SUCCESS, token)
