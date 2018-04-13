@@ -15,6 +15,7 @@
             return {
                 currFPS : 0.0,
                 updateFPSticker : 0,
+                mainLoop : MainLoop,
             }
         },
 
@@ -22,7 +23,7 @@
 
             console.log('game mounted');
 
-            MainLoop.setUpdate(this.gameUpdated).setDraw(this.gameDraw).start();
+            this.mainLoop.setUpdate(this.gameUpdated).setDraw(this.gameDraw).start();
 
             this.$store.commit('setTitle', 'title_game');
         },
@@ -30,20 +31,20 @@
         computed : {
             getFPS() {
                 return this.currFPS;
-            }
+            },
         },
 
         beforeDestroy() {
             console.log('game before destroy');
 
-            MainLoop.stop();
+            this.mainLoop.stop();
         },
 
         methods : {
             gameUpdated(delta) { 
                 this.updateFPSticker += delta;
                 if (this.updateFPSticker >= 1000) {
-                    this.currFPS = MainLoop.getFPS();
+                    this.currFPS = this.mainLoop.getFPS();
                     this.updateFPSticker -= 1000;
                 }
             },
