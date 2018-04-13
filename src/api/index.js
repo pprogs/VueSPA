@@ -7,7 +7,7 @@ export const Errors = {
 }
 
 
-export default {
+export const UserApi = {
 
     Ax : axios.create({
         baseURL: 'http://localhost:8081/api/',

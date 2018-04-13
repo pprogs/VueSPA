@@ -1,5 +1,5 @@
 import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT, USER_REGISTER } from "./actions";
-import Api from "~/api"
+import { UserApi } from "~/api"
 
 export default {
   namespaced: false,
@@ -61,7 +61,7 @@ export default {
 
       return new Promise((resolve, reject) => {
      
-        Api.authUser( user ).then(
+        UserApi.authUser( user ).then(
           user => {
 
             console.log('store auth_req success');

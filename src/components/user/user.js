@@ -1,4 +1,4 @@
-import Api from '~/api/'
+import { UserApi } from '~/api/'
 
 export default {
 
@@ -20,7 +20,7 @@ export default {
 
         methods: {
             loadUser : function() {
-                Api.getUser(5, resp => {
+                UserApi.getUser(5, resp => {
                     this.userData = resp
                 })                
             }  
