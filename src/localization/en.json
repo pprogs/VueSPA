@@ -25,16 +25,17 @@
     "usr_b_reg" : "REGISTER",
     "usr_b_areg" : "ALREADY REGISTERED",
     "usr_b_remember" : "I REMEMBER",
+    "usr_b_logout" : "LOGOUT",
 
     "nav_b_index" : "INDEX",
     "nav_b_about" : "ABOUT",
     "nav_b_user" : "USER",
-    "usr_b_logout" : "LOGOUT",
+    "nav_b_game" : "GAME",
 
     "title_user" : "User section",
     "title_about" : "About",
     "title_index" : "Index",
-
+    "title_game" : "Game",
 
     "api_503" : "Could not connect. Please, try again later",
     "api_401" : "User or password is incorrect",

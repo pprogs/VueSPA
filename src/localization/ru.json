@@ -25,16 +25,17 @@
     "usr_b_reg" : "РЕГИСТРАЦИЯ",
     "usr_b_areg" : "ЕСТЬ РЕГИСТРАЦИЯ",
     "usr_b_remember" : "ВСПОМНИЛ",
+    "usr_b_logout" : "ВЫЙТИ",
 
     "nav_b_index" : "ГЛАВНАЯ",
     "nav_b_about" : "О НАС",
     "nav_b_user" : "ПОЛЬЗОВАТЕЛЬ",
-    "usr_b_logout" : "ВЫЙТИ",
-
+    "nav_b_game" : "ИГРА",
+        
     "title_user" : "Пользователь",
     "title_about" : "О нас",
     "title_index" : "Главная",
-
+    "title_game" : "Игра",
 
 
     "api_503" : "Ошибка соединения. Попробуйте позже",
