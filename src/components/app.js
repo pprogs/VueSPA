@@ -12,6 +12,10 @@ let computed = {
 
     locale : function() {
         return this.$store.state.loc;
+    },
+
+    isLogged() {
+        return this.$store.getters.isAuthenticated;
     }
 }
 
