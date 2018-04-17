@@ -1,94 +1,78 @@
-import Vue from 'vue'
-import axios from 'axios'
+import Vue from "vue";
+import axios from "axios";
 
 export const Errors = {
-    NO_CONN : 503,
-    INT : 500
-}
-
+  NO_CONN: 503,
+  INT: 500
+};
 
 export const UserApi = {
+  Ax: axios.create({
+    baseURL: "http://localhost:8081/api/",
+    timeout: 1000,
+    headers: { "Access-Control-Allow-Origin": "*" }
+  }),
 
-    Ax : axios.create({
-        baseURL: 'http://localhost:8081/api/',
-        timeout: 1000,
-        headers: {'Access-Control-Allow-Origin': '*'}
-    }),
+  //
+  //
+  //
+  getUserInfo(id) {
+    console.log("getUserInfo");
 
-    //
-    //
-    //
-    getUserInfo(id) {
+    return this.Ax.get(`user/${id}`);
+  },
 
-        console.log("getUserInfo");
+  //
+  authUser(user) {
+    console.log("authUser");
 
-        return this.Ax.get(`user/${id}`); 
-    },
+    return new Promise((resolve, reject) => {
+      this.Ax
+        .post("auth", user)
+        .then(response => {
+          console.log("authUser responce");
 
-    //
-    //
-    //
-    authUser(user) {
+          if (response.status === 200 && response.data) {
+            resolve(response.data);
+          }
+          reject(Errors.INT);
+        })
+        .catch(error => {
+          console.log("authUser error");
 
-        console.log("authUser");
+          if (error.response) {
+            // check error codes
+            reject(error.response.status);
+          }
 
-        return new Promise( (resolve,reject) => {
-
-            this.Ax.post('auth', user )
-
-            .then( (response) => {
-
-                console.log('authUser responce');
-
-                if (response.status === 200 && response.data) {
-                        try {                            
-                            resolve(response.data);
-                        } catch(e) {
-                            console.log('error parsing json response');
-                            console.log(e);
-                            
-                            reject(Errors.INT);
-                        }
-                }
-                reject(Errors.INT);
-            })
-            .catch( (error) => {
-
-                console.log('authUser error');
-
-                if (error.response) {
-                    // check error codes
-                    reject(error.response.status);
-                } 
-
-                // no connection
-                reject(Errors.NO_CONN);                
-            });
+          // no connection
+          reject(Errors.NO_CONN);
         });
-    },
+    });
+  },
 
-    //
-    //
-    //    
-    registerUser(user) {
+  //
+  registerUser(user) {
+    console.log("registerUser");
 
-        console.log("registerUser")
+    return new Promise((resolve, reject) => {
+      this.Ax
+        .post("register", user)
+        .then(responce => {
+          console.log("authUser responce");
 
-        return new Promise( (resolve,reject) => {
+          resolve(responce);
+        })
+        .catch(error => {
+          console.log("authUser error");
 
-            this.Ax.post( 'register', {
-                params : user
-            })                
-            .then( responce => {
-                console.log('authUser responce');
-
-                resolve(responce);
-            })
-            .catch( error => {
-                console.log('authUser error');
-                    
-                reject(error.body);
-            });
+          reject(error.body);
         });
-    }
-}
+    });
+  },
+
+  //
+  checkUserName(name) {
+      return true;
+  }
+};

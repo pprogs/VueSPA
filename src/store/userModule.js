@@ -1,5 +1,11 @@
-import { AUTH_REQUEST, AUTH_ERROR, AUTH_SUCCESS, AUTH_LOGOUT, USER_REGISTER } from "./actions";
-import { UserApi } from "~/api"
+import {
+  AUTH_REQUEST,
+  AUTH_ERROR,
+  AUTH_SUCCESS,
+  AUTH_LOGOUT,
+  USER_REGISTER
+} from "./actions";
+import { UserApi } from "~/api";
 
 export default {
   namespaced: false,
@@ -29,7 +35,6 @@ export default {
   // mutations
 
   mutations: {
-
     [AUTH_REQUEST]: state => {
       state.status = "loading";
     },
@@ -53,52 +58,41 @@ export default {
   // actions
 
   actions: {
-
     //
     //
     //
     [AUTH_REQUEST]: (context, user) => {
-
       return new Promise((resolve, reject) => {
-     
-        UserApi.authUser( user ).then(
+        UserApi.authUser(user).then(
           user => {
+            console.log("store auth_req success");
 
-            console.log('store auth_req success');
+            const token = "user.token";
+            localStorage.setItem("user-token", token);
 
-            const token = 'user.token'
-            localStorage.setItem('user-token', token)
+            context.commit(AUTH_SUCCESS, token);
 
-            context.commit(AUTH_SUCCESS, token)
-
-            resolve(user)
+            resolve(user);
           },
           error => {
-          
-            console.log('dispatch auth req error');
+            console.log("dispatch auth req error");
 
             context.commit(AUTH_ERROR, error);
-            localStorage.removeItem('user-token') ;
+            localStorage.removeItem("user-token");
 
-            reject(error)
+            reject(error);
           }
         );
       });
     },
 
     [USER_REGISTER]: (context, user) => {
-
-      return new Promise( (resolve, reject) => {
-
-        
-
-      });
+      return new Promise((resolve, reject) => {});
     },
 
-    [AUTH_LOGOUT]: (context) => {
-
+    [AUTH_LOGOUT]: context => {
       context.commit(AUTH_LOGOUT);
-      localStorage.removeItem('user-token') ;
+      localStorage.removeItem("user-token");
     }
   }
 };

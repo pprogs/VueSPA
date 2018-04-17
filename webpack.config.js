@@ -4,13 +4,17 @@ var stylusLoader = require('stylus-loader')
 
 module.exports = {
 
-    entry: ["babel-polyfill", "./src/main.js"],
+    entry: {
+        main : [ "babel-polyfill", "./src/main.js", ],
+        worker : "./src/worker/index.js"
+    },
+
     devtool: 'inline-source-map',
 
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'src')
