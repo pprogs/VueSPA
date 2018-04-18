@@ -1,29 +1,42 @@
 {
-  "name": "test",
+  "name": "vue.test",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "testu": "jest -u",
     "build": "webpack",
-    "start": "webpack ./app.js bundle.js",
-    "dev": "webpack-dev-server --history-api-fallback"
+    "start": "webpack ./main.js bundle.js",
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Konstantin",
   "license": "ISC",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.vue$": "vue-jest"
+    },
+    "snapshotSerializers": ["jest-serializer-vue"]
+  },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.14",
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-plugin-vue": "^4.4.0",
+    "jest": "^22.4.3",
+    "jest-serializer-vue": "^1.0.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-jest": "^2.5.0",
     "vue-loader": "^13.7.1",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^3.11.0",
