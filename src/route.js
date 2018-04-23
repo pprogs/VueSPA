@@ -5,8 +5,7 @@ import Index from './components/index.vue'
 import Page404 from './components/404.vue'
 import About from './components/about.vue'
 
-import Game from './components/game/game.vue'
-
+import GameRoutes from './routes/game.js'
 import UserRoutes from './routes/user.js'
 
 Vue.use(VueRouter);
@@ -14,7 +13,7 @@ Vue.use(VueRouter);
 const routes = [
     { path: '/', component: Index },
     { path: '/about', component: About },
-    { path: '/game', component: Game },
+    ...GameRoutes,
     ...UserRoutes,
     { path: '*', component: Page404 },
 ];

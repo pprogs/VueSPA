@@ -37,8 +37,8 @@
   "title_index": "Index",
   "title_game": "Game",
 
-  "game_m_item1": "ITEM 1",
-  "game_m_item2": "ITEM 2",
+  "game_m_res": "RESOURCES",
+  "game_m_stats": "STATS",
 
   "api_503": "Could not connect. Please, try again later",
   "api_401": "User or password is incorrect",

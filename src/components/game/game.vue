@@ -1,10 +1,10 @@
 <template>
     <div>
 
-        <v-navigation-drawer width="150" clipped permanent app>
+        <v-navigation-drawer width="200" clipped permanent app>
 
             <v-list dense class="pt-5">
-                <v-list-tile v-for="item in items" :key="item.title">
+                <v-list-tile v-for="item in items" :key="item.title" :to="item.path">
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
@@ -24,7 +24,8 @@
 
 <script>
 
-import MainLoop from 'mainloop.js'
+
+import Game from '~/game'
 
 export default {
 
@@ -32,11 +33,11 @@ export default {
         return {
             currFPS: 0.0,
             updateFPSticker: 0,
-            mainLoop: MainLoop,
+            game : undefined,
             menuActive: false,
             items: [
-                { title: 'game_m_item1', icon: 'dashboard' },
-                { title: 'game_m_item2', icon: 'question_answer' }
+                { title: 'game_m_res', icon: 'dashboard', path: '/game/res' },
+                { title: 'game_m_stats', icon: 'question_answer', path: '/game/stats' }
             ],
 
         }
@@ -46,15 +47,16 @@ export default {
 
         console.log('game mounted');
 
-        this.mainLoop.setUpdate(this.gameUpdated).setDraw(this.gameDraw).start();
+        this.game = new Game();
+        this.game.start();
 
+        
         this.$store.commit('setTitle', 'title_game');
-
         this.menuActive = true;
     },
 
     computed: {
-        getFPS() {
+        curFPS() {
             return this.currFPS;
         },
     },
@@ -62,7 +64,7 @@ export default {
     beforeDestroy() {
         console.log('game before destroy');
 
-        this.mainLoop.stop();
+        this.game.stop();
     },
 
     methods: {
@@ -85,10 +87,10 @@ export default {
 <style scoped>
   .mfade-enter-active, .mfade-leave-active {
     transition-property: opacity;
-    transition-duration: 0.10s;
+    transition-duration: 0.05s;
   }
   .mfade-enter-active {
-    transition-delay: .10s;
+    transition-delay: .05s;
   }
   .mfade-enter, .mfade-leave-active {
     opacity: 0
