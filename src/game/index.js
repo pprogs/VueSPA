@@ -1,63 +1,73 @@
+import MainLoop from "mainloop.js";
 
+import Res from "./res.js";
 
-import MainLoop from 'mainloop.js'
+function Game() {
+  this.title = "Hello world 2";
+  this.mainLoop = MainLoop;
 
-import Res from './res.js'
+  this.resources = [
+    Res(1, "r_coal"),
+    Res(2, "r_iron"),
+    Res(3, "r_stone"),
+    Res(4, "r_wood"),
+    Res(5, "r_copper"),
+    Res(6, "r_oil"),
+    Res(7, "r_platina"),
+    Res(8, "r_cvartz")
+  ];
 
+  this.resourcesStats = {};
 
-
-function Game(canvas)
-{
-
-    this.Title = "Hello world 2";
-    this.Canvas = canvas;
-    this.MainLoop = MainLoop;
-
-    this.Resources = [
-        Res("coal"),
-        Res("iron"),
-        Res("stone"),
-        Res("wood"),
-        Res("copper"),
-        Res("oil"),
-        Res("platina"),
-        Res("cvartz")
-    ]
+  this.resources.forEach(r => {
+    this.resourcesStats[r.name + "Counts"] = 0;
+  });
 }
 
 Game.prototype = {
+  getTitle: function() {
+    return this.Title;
+  },
 
-    getTitle : function() {
-        return this.Title;
-    },
+  start: function() {
+    this.mainLoop.setSimulationTimestep(200);
+    this.mainLoop
+      .setUpdate(
+        (function(game) {
+          return function(delta) {
+            game.update(delta);
+          };
+        })(this)
+      )
+      .start();
+  },
 
-    start : function() {
-        console.log("Start " + this.Title );
+  stop: function() {
+    this.mainLoop.stop();
+  },
 
-        this.MainLoop.setSimulationTimestep(100);
-        this.MainLoop.setUpdate(
-            (function(game) {
-                return function(delta) {
-                    game.update(delta);
-                }
-            })(this)
-        ).start();
-    },
+  update: function(delta) {
+    this.resources.forEach(function(res) {
+      res.update(delta);
+    }, this);
 
-    stop : function() {
-        this.MainLoop.stop();
-    },
+    this.updateResourcesStats();
+  },
 
-    update : function(delta) {
-        //console.log(this);
-        //console.log('update ' + this.coal.getCount());
+  updateResourcesStats: function() {
+    this.resources.forEach(r => {
+      this.resourcesStats[r.name + "Counts"] = {
+          count : r.count(),
+          name : r.name,
+          id : r.id
+      }
+    });
+  },
 
-        this.Resources.forEach(function(res) {
-            res.update(delta);
-        }, this);
-    }
-}
-
-
+  buyResource : function(id, amount) {
+      const r = this.resources.find( res => res.id == id);
+      r.produce(amount);
+  }
+};
 
 export default Game;

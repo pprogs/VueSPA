@@ -24,75 +24,49 @@
 
 <script>
 
-
-import Game from '~/game'
-
 export default {
 
     data: function() {
         return {
-            currFPS: 0.0,
-            updateFPSticker: 0,
-            game : undefined,
-            menuActive: false,
             items: [
-                { title: 'game_m_res', icon: 'dashboard', path: '/game/res' },
-                { title: 'game_m_stats', icon: 'question_answer', path: '/game/stats' }
+                { title: 'game_m_res', icon: 'brightness_5', path: '/game/res' },
+                { title: 'game_m_stats', icon: 'assignment', path: '/game/stats' }
             ],
-
         }
     },
 
     mounted() {
-
-        console.log('game mounted');
-
-        this.game = new Game();
-        this.game.start();
-
-        
         this.$store.commit('setTitle', 'title_game');
-        this.menuActive = true;
+
+        this.$store.state.game.game.start();        
     },
 
     computed: {
-        curFPS() {
-            return this.currFPS;
-        },
     },
 
     beforeDestroy() {
-        console.log('game before destroy');
-
-        this.game.stop();
+        this.$store.state.game.game.stop();
     },
 
     methods: {
-        gameUpdated(delta) {
-            this.updateFPSticker += delta;
-            if (this.updateFPSticker >= 1000) {
-                this.currFPS = this.mainLoop.getFPS();
-                this.updateFPSticker -= 1000;
-            }
-        },
-
-        gameDraw() {
-
-        },
     }
 }
 
 </script>
 
 <style scoped>
-  .mfade-enter-active, .mfade-leave-active {
+.mfade-enter-active,
+.mfade-leave-active {
     transition-property: opacity;
     transition-duration: 0.05s;
-  }
-  .mfade-enter-active {
+}
+
+.mfade-enter-active {
     transition-delay: .05s;
-  }
-  .mfade-enter, .mfade-leave-active {
+}
+
+.mfade-enter,
+.mfade-leave-active {
     opacity: 0
-  }
+}
 </style>

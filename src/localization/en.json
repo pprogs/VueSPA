@@ -42,5 +42,15 @@
 
   "api_503": "Could not connect. Please, try again later",
   "api_401": "User or password is incorrect",
-  "api_500": "Internal error. Please, try again later"
+  "api_500": "Internal error. Please, try again later",
+
+
+  "r_coal": "Coal",
+  "r_iron": "Iron",
+  "r_stone": "Stone",
+  "r_wood": "Wood",
+  "r_copper": "Copper",
+  "r_oil": "Oil",
+  "r_platina": "Platina",
+  "r_cvartz": "Cvartz"
 }
