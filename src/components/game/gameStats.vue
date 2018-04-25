@@ -3,7 +3,7 @@
         <div>Some stats</div>
 
         <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm12 md6 offset-md3>
                 <v-card>
 
                     <v-list dense>
@@ -23,20 +23,20 @@
                                     </v-tooltip>
                                 </v-flex>
 
-                                <v-flex xs4 sm4>
-                                    {{ $t(r.name) }}
+                                <v-flex xs4 sm5>
+                                    {{ $t(r.link.name) }}
                                 </v-flex>
 
                                 <v-flex xs4 sm4>
-                                    {{ r.count }}
+                                    {{ r.link.count() }}
                                 </v-flex>
 
-                                <v-flex xs3 sm3>
-                                    <v-btn small icon ripple @click="buyRes(r.id)">
-                                        <v-icon color="grey lighten-1">file_download</v-icon>
-                                    </v-btn>
-                                    <v-btn small icon ripple>
+                                <v-flex xs3 sm2>
+                                    <v-btn small icon ripple @click="buyRes(r.id)" class="ma-0">
                                         <v-icon color="grey lighten-1">file_upload</v-icon>
+                                    </v-btn>
+                                    <v-btn small icon ripple class="ma-0">
+                                        <v-icon color="grey lighten-1">file_download</v-icon>
                                     </v-btn>
                                 </v-flex>
                             </v-layout>

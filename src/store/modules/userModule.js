@@ -4,7 +4,7 @@ import {
   AUTH_SUCCESS,
   AUTH_LOGOUT,
   USER_REGISTER
-} from "./actions";
+} from "../actions";
 import { UserApi } from "~/api";
 
 export default {

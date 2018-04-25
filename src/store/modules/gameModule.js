@@ -1,5 +1,4 @@
-
-import Game from '~/game'
+import Game from "~/game";
 
 export default {
   namespaced: true,
@@ -8,27 +7,23 @@ export default {
   // state
 
   state: {
-
-    game : new Game(),
+    game: new Game()
   },
 
   //------------------------------
   // getters
 
   getters: {
-    resources : (state) => state.game.resourcesStats,
+    resources: state => state.game.resourcesStats
   },
 
   //------------------------------
   // mutations
 
-  mutations: {
-    
-  },
+  mutations: {},
 
   //------------------------------
   // actions
 
-  actions: {
-  }
+  actions: {}
 };

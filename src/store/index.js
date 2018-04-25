@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import userModule from "./userModule";
-import gameModule from "./gameModule";
+import userModule from "./modules/userModule";
+import gameModule from "./modules/gameModule";
 
 Vue.use(Vuex);
 

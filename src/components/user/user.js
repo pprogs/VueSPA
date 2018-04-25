@@ -1,28 +1,25 @@
-import { UserApi } from '~/api/'
+import { UserApi } from "~/api/";
 
 export default {
+  data: function() {
+    return {
+      userData: "userData",
+      inputLogin: "",
+      inputPassword: ""
+    };
+  },
 
-        data: function() {
-            return {
-                userData : "userData",
-                inputLogin : "",
-                inputPassword : ""
-            }
-        },
+  computed: {},
 
-        computed : {
+  mounted: function() {
+    this.$store.commit("setTitle", "l_user");
+  },
 
-        },
-
-        mounted: function() {
-            this.$store.commit('setTitle', 'l_user');
-        },
-
-        methods: {
-            loadUser : function() {
-                UserApi.getUser(5, resp => {
-                    this.userData = resp
-                })                
-            }  
-        }
-}
+  methods: {
+    loadUser: function() {
+      UserApi.getUser(5, resp => {
+        this.userData = resp;
+      });
+    }
+  }
+};

@@ -20,7 +20,7 @@ function Game() {
   this.resourcesStats = {};
 
   this.resources.forEach(r => {
-    this.resourcesStats[r.name + "Counts"] = 0;
+    this.resourcesStats[r.name + "Counts"] = {};
   });
 }
 
@@ -57,16 +57,17 @@ Game.prototype = {
   updateResourcesStats: function() {
     this.resources.forEach(r => {
       this.resourcesStats[r.name + "Counts"] = {
-          count : r.count(),
-          name : r.name,
-          id : r.id
-      }
+        count: r.count(),
+        name: r.name,
+        id: r.id,
+        link: r
+      };
     });
   },
 
-  buyResource : function(id, amount) {
-      const r = this.resources.find( res => res.id == id);
-      r.produce(amount);
+  buyResource: function(id, amount) {
+    const r = this.resources.find(res => res.id == id);
+    r.produce(amount);
   }
 };
 

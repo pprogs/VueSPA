@@ -73,6 +73,6 @@ export const UserApi = {
 
   //
   checkUserName(name) {
-      return true;
+    return true;
   }
 };
