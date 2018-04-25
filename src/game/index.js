@@ -20,7 +20,7 @@ function Game() {
   this.resourcesStats = {};
 
   this.resources.forEach(r => {
-    this.resourcesStats[r.name + "Counts"] = {};
+    this.resourcesStats[r.name + "Counts"] = { link: r };
   });
 }
 

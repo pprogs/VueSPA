@@ -5,6 +5,9 @@ export default function(id, name) {
   r.name = name;
   r.id = id;
 
+  r.producers = [];
+  r.consumers = [];
+
   r.produce = function(val) {
     count += val;
   };

@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div>Some stats</div>
 
         <v-layout row>
-            <v-flex xs12 sm12 md6 offset-md3>
+            <v-flex xs12 sm12 md10 offset-md1>
                 <v-card>
 
                     <v-list dense>
@@ -23,20 +22,20 @@
                                     </v-tooltip>
                                 </v-flex>
 
-                                <v-flex xs4 sm5>
+                                <v-flex xs4 sm6>
                                     {{ $t(r.link.name) }}
                                 </v-flex>
 
                                 <v-flex xs4 sm4>
-                                    {{ r.link.count() }}
+                                    {{ format(r.link.count()) }}
                                 </v-flex>
 
-                                <v-flex xs3 sm2>
+                                <v-flex xs3 sm1>
                                     <v-btn small icon ripple @click="buyRes(r.id)" class="ma-0">
-                                        <v-icon color="grey lighten-1">file_upload</v-icon>
-                                    </v-btn>
-                                    <v-btn small icon ripple class="ma-0">
-                                        <v-icon color="grey lighten-1">file_download</v-icon>
+                                        <v-tooltip bottom>
+                                            <v-icon color="grey lighten-1" slot="activator">file_upload</v-icon>
+                                            <span>Get 1 {{ $t(r.link.name) }}</span>
+                                        </v-tooltip>
                                     </v-btn>
                                 </v-flex>
                             </v-layout>
@@ -53,7 +52,10 @@
 
 <script>
 
+import { FormatNumber } from '~/utils'
+
 export default {
+
 
     methods: {
         buyRes(id) {
@@ -61,6 +63,10 @@ export default {
 
             this.$store.state.game.game.buyResource(id, 1000);
         },
+
+        format(number) {
+            return FormatNumber(number);
+        }
     },
 
     computed: {
