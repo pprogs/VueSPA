@@ -4,7 +4,7 @@ import Res from "./res.js";
 import Man from "./some.js";
 
 function Game() {
-  this.title = "Hello world 2";
+
   this.mainLoop = MainLoop;
 
   this.resources = [
@@ -28,10 +28,10 @@ function Game() {
 }
 
 Game.prototype = {
-  getTitle: function() {
-    return this.Title;
-  },
 
+  //
+  //
+  //
   start: function() {
     this.mainLoop.setSimulationTimestep(200);
     this.mainLoop
@@ -45,10 +45,16 @@ Game.prototype = {
       .start();
   },
 
+  //
+  //
+  //
   stop: function() {
     this.mainLoop.stop();
   },
 
+  //
+  //
+  //
   update: function(delta) {
     this.resources.forEach(function(res) {
       res.update(delta);
@@ -57,6 +63,9 @@ Game.prototype = {
     this.updateResourcesStats();
   },
 
+  //
+  //
+  //
   updateResourcesStats: function() {
     this.resources.forEach(r => {
       this.resourcesStats[r.name + "Counts"] = {
@@ -68,6 +77,9 @@ Game.prototype = {
     });
   },
 
+  //
+  //
+  //
   buyResource: function(id, amount) {
     const r = this.resources.find(res => res.id == id);
     r.produce(amount);
