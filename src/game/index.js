@@ -1,6 +1,7 @@
 import MainLoop from "mainloop.js";
 
 import Res from "./res.js";
+import Man from "./some.js";
 
 function Game() {
   this.title = "Hello world 2";
@@ -22,6 +23,8 @@ function Game() {
   this.resources.forEach(r => {
     this.resourcesStats[r.name + "Counts"] = { link: r };
   });
+
+  this.machines = {};
 }
 
 Game.prototype = {

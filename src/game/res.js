@@ -25,7 +25,6 @@ export default function(id, name) {
   };
 
   r.update = function(delta) {
-    count += r.id;
   };
 
   return r;

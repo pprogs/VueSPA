@@ -14,6 +14,10 @@ import App from "./components/app.vue";
 
 Vue.use(Vuetify);
 
+import FormatPlugin from "./utils/formatPlugin"
+
+Vue.use(FormatPlugin);
+
 var app = new Vue({
   el: "#app",
   store,

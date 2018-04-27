@@ -7,6 +7,13 @@
 
                     <v-list dense>
 
+                        <v-layout row align-baseline>
+                            <v-flex xs1 sm1 class="text-xs-center">Info</v-flex>
+                            <v-flex xs4 sm6 class="text-xs-center">Name</v-flex>
+                            <v-flex xs4 sm6 class="text-xs-center">Store</v-flex>
+                        </v-layout>
+
+
                         <template v-for="r in resources">
 
                             <v-layout row :key="r.id" align-baseline>
@@ -27,7 +34,7 @@
                                 </v-flex>
 
                                 <v-flex xs4 sm4>
-                                    {{ format(r.link.count()) }}
+                                    {{ $format(r.link.count()) }} / 10K
                                 </v-flex>
 
                                 <v-flex xs3 sm1>
@@ -40,9 +47,11 @@
                                 </v-flex>
                             </v-layout>
                         </template>
-
                     </v-list>
-
+                </v-card>
+                <v-spacer>g</v-spacer>
+                <v-card>
+                    <v-btn>Small Stone</v-btn>
                 </v-card>
             </v-flex>
         </v-layout>
@@ -56,12 +65,20 @@ import { FormatNumber } from '~/utils'
 
 export default {
 
+    data: function() {
+        return {
+            game : null
+        }
+    },
+
+    mounted() {
+        this.game = this.$store.state.game.game;
+        console.log("mounted");
+    },
 
     methods: {
         buyRes(id) {
-            console.log("buy res " + id);
-
-            this.$store.state.game.game.buyResource(id, 1000);
+            this.game.buyResource(id, 1);
         },
 
         format(number) {
