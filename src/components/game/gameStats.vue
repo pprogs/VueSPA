@@ -30,11 +30,12 @@
                                 </v-flex>
 
                                 <v-flex xs4 sm6>
+                                    <img :src="'/res/' + r.link.icon">
                                     {{ $t(r.link.name) }}
                                 </v-flex>
 
                                 <v-flex xs4 sm4>
-                                    {{ $format(r.link.count()) }} / 10K
+                                    {{ $format(r.link.count) }} / 10K
                                 </v-flex>
 
                                 <v-flex xs3 sm1>

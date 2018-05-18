@@ -8,14 +8,14 @@ function Game() {
   this.mainLoop = MainLoop;
 
   this.resources = [
-    Res(1, "r_coal"),
-    Res(2, "r_iron"),
-    Res(3, "r_stone"),
-    Res(4, "r_wood"),
-    Res(5, "r_copper"),
-    Res(6, "r_oil"),
-    Res(7, "r_platina"),
-    Res(8, "r_cvartz")
+    Res(1, "r_coal", "coal.jpeg"),
+    Res(2, "r_iron", "iron.jpeg"),
+    Res(3, "r_stone", "gold.jpeg"),
+    Res(4, "r_wood", "wood.jpeg"),
+    Res(5, "r_copper", "gold.jpeg"),
+    Res(6, "r_oil", "oil.jpeg"),
+    Res(7, "r_platina", "gold.jpeg"),
+    Res(8, "r_cvartz", "gold.jpeg")
   ];
 
   this.resourcesStats = {};
@@ -56,9 +56,7 @@ Game.prototype = {
   //
   //
   update: function(delta) {
-    this.resources.forEach(function(res) {
-      res.update(delta);
-    }, this);
+
 
     this.updateResourcesStats();
   },
@@ -69,7 +67,7 @@ Game.prototype = {
   updateResourcesStats: function() {
     this.resources.forEach(r => {
       this.resourcesStats[r.name + "Counts"] = {
-        count: r.count(),
+        count: r.count,
         name: r.name,
         id: r.id,
         link: r
@@ -82,7 +80,7 @@ Game.prototype = {
   //
   buyResource: function(id, amount) {
     const r = this.resources.find(res => res.id == id);
-    r.produce(amount);
+    r.count += amount;
   }
 };
 

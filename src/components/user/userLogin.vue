@@ -12,9 +12,14 @@
 
                         <v-card-text>
                             <v-text-field prepend-icon="person" v-model='inputLogin' :label="$t('l_name')" :rules="nameRules" :disabled="isLoading" required></v-text-field>
-
-                            <v-text-field prepend-icon="https" v-model="inputPassword" type="password" :label="$t('l_pass')" :rules="passwordRules" :disabled="isLoading" required></v-text-field>
-
+                            <v-text-field 
+                                prepend-icon="https" 
+                                v-model="inputPassword" 
+                                type="password" 
+                                :label="$t('l_pass')" 
+                                :rules="passwordRules" 
+                                :disabled="isLoading" 
+                                required></v-text-field>
                             <v-alert color="error" icon="warning" transition="scale-transition" :value="isError">
                                 {{getErrorMessage}}
                             </v-alert>
@@ -42,6 +47,7 @@
 </template>
 
 <script>
+
 import Store from '~/store'
 import { AUTH_REQUEST } from '~/store/actions'
 import { nameRules, passwordRules } from '~/api/validateRules.js';
