@@ -1,5 +1,33 @@
 import * as items from "./items";
 
+
+const mining = [
+  'Coal drill',
+  'Advanced coal drill',
+  'Electric drill',
+  'Advanced electric drill'
+];
+
+const smelting = [
+  'Coal oven',
+  'Advanced coal oven',
+  'Electric oven',
+  'Advanced electric oven'
+]
+
+const pump = [
+  'Coal pump',
+  'Electric pump',
+  'Coal oil pump',
+  'Electric oil pump'
+];
+
+const manufacture = [
+  'Basic production unit',
+  ''
+];
+
+
 const coalDrill = function() {
   this.name = "Coal burning drill";
   this.baseCost = {

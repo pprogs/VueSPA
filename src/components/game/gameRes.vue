@@ -1,7 +1,26 @@
 <template>
     <div>
-        <div>Some game</div>
+        
 
+        <v-expansion-panel>
+            <v-expansion-panel-content>
+                <div slot="header">
+                     <v-icon>loop</v-icon> Mining equipment
+                </div>
+                    <v-card>
+                        <v-card-text>Bla bla bla</v-card-text>
+                    </v-card>
+            </v-expansion-panel-content>
+
+            <v-expansion-panel-content>
+                <div slot="header">
+                     <v-icon>loop</v-icon> Smelting equipment
+                </div>
+                    <v-card>
+                        <v-card-text>Bla bla bla</v-card-text>
+                    </v-card>
+            </v-expansion-panel-content>            
+        </v-expansion-panel>
  
     </div>
 </template>
